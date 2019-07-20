@@ -21,10 +21,10 @@ pipeline {
 	PROJECT = "${JENKINS_TEST_PROJECT}"
 	GCR_IMAGE = "gcr.io/${PROJECT}/cloudbees-day-seattle-demo:${BUILD_ID}"
 	APP_JAR = "cloudbees-day-seattle-demo.jar"
-	STAGING_CLUSTER = "staging"
+	/*STAGING_CLUSTER = "staging"
 	STAGING_CLUSTER_ZONE = "us-central1-c"
 	PROD_CLUSTER = "prod"
-	PROD_CLUSTER_ZONE = "us-central1-c"
+	PROD_CLUSTER_ZONE = "us-central1-c"*/
 	
     }
 
