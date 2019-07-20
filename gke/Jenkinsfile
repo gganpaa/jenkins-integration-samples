@@ -86,17 +86,17 @@ pipeline {
 	    steps{
 		container('gke-deploy') {
 		    sh "sed -i s#IMAGE#${GCR_IMAGE}#g gke/kubernetes/manifest.yaml"
-                    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT, clusterName: env.STAGING_CLUSTER, zone: env.STAGING_CLUSTER_ZONE, manifestPattern: 'gke/kubernetes/manifest.yaml', credentialsId: env.JENKINS_TEST_CRED_ID, verifyDeployments: true])
+                    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT, clusterName: env.STAGING_CLUSTER, zone: env.STAGING_CLUSTER_ZONE, manifestPattern: 'gke/kubernetes/manifest.yaml', credentialsId: env.JENKINS_TEST_CRED_ID, verifyDeployments: false])
 		}
             }
 	}
-        stage('Wait for SRE Approval') {
+       /* stage('Wait for SRE Approval') {
             steps{
                 timeout(time:12, unit:'HOURS') {
                     input message:'Approve deployment?'
                 }
             }
-        }
+        }*/
 	stage("Deploy to prod") {
             agent {
     	        kubernetes {
