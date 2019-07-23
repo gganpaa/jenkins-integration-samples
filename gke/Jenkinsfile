@@ -90,13 +90,13 @@ pipeline {
 		}
             }
 	}
-       stage('Wait for SRE Approval') {
+     /*  stage('Wait for SRE Approval') {
             steps{
                 timeout(time:12, unit:'HOURS') {
                     input message:'Approve deployment?'
                 }
             }
-        }
+        }*/
 	stage("Deploy to prod") {
             agent {
     	        kubernetes {
